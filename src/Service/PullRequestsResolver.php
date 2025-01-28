@@ -57,6 +57,10 @@ class PullRequestsResolver implements ResolverInterface
 
         foreach (file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
             try {
+                if (filter_var($line, FILTER_VALIDATE_URL) === false) {
+                    continue;
+                }
+
                 $patch = $this->patchLocator->locate($line);
                 $collection->addPatch($patch);
             } catch (Throwable $e) {
