@@ -78,7 +78,7 @@ class GitLabPullRequestDownloader extends DownloaderBase
                 IOInterface::VERBOSE
             );
             $diffCommand = sprintf(
-                'cd %s && git diff ...%s/%s 2>&1',
+                'cd %s && git diff %s/%s... 2>&1',
                 escapeshellarg($installedPackagePath),
                 $remoteName,
                 escapeshellarg($sourceBranch),
