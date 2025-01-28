@@ -29,10 +29,13 @@ class PullRequestsResolver implements ResolverInterface
         $this->patchLocator = new PatchFromUrlFactory($composer);
     }
 
-    private function locateReplacementsFile(): string
+    private function locateReplacementsFile(): ?string
     {
         $vendor = $this->composer->getConfig()->get('vendor-dir');
         $path = realpath("$vendor/../pull-requests.txt");
+        if ($path === false) {
+            return null;
+        }
 
         return $path;
     }
@@ -40,7 +43,7 @@ class PullRequestsResolver implements ResolverInterface
     public function resolve(PatchCollection $collection): void
     {
         $path = $this->locateReplacementsFile();
-        if (!file_exists($path)) {
+        if ($path === null) {
             return;
         }
 
