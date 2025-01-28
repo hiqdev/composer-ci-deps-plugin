@@ -47,3 +47,30 @@ composer require --dev hiqdev/composer-ci-deps-plugin
 
 2. Run `composer prp` – this will download patches from the pull requests and apply them to the dependencies.
 
+
+## Development
+
+The easiest way to test the plugin is to create a new project and require the plugin from the local path:
+
+```json
+{
+    "repositories": [
+        {
+            "type": "path",
+            "url": "/path/to/composer-ci-deps-plugin"
+        }
+    ],
+    "require-dev": {
+        "hiqdev/composer-ci-deps-plugin": "*"
+    }
+}
+```
+
+Then you can run the plugin with the following command and enjoy the debugging with XDebug:
+
+```bash
+export XDEBUG_TRIGGER=1
+export COMPOSER_ALLOW_XDEBUG=1
+export GITLAB_REPO_ACCESS_TOKEN=<your GitLab access token>
+composer prp
+```
