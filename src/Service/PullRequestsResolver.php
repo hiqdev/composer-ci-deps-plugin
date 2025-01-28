@@ -1,9 +1,7 @@
 <?php
-
 declare(strict_types=1);
 
 namespace hiqdev\ComposerCiDeps\Service;
-
 
 use Composer\Composer;
 use Composer\IO\IOInterface;

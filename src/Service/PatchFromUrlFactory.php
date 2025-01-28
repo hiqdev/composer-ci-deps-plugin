@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace hiqdev\ComposerCiDeps\Service;
 
@@ -9,8 +10,8 @@ use hiqdev\ComposerCiDeps\Exception\UnresolvedUrlException;
 
 /**
  * Locates patches by pull request URL.
- * 
- * Example PR urls: 
+ *
+ * Example PR urls:
  *  - https://gitlab.com/ultimateretro/ultimateretro/-/merge_requests/49
  *  - https://github.com/hiqdev/php-billing/pull/94
  */
@@ -54,8 +55,8 @@ class PatchFromUrlFactory
         $packageName = implode('/', array_slice($path, 0, 2));
 
         $package = $this->composer->getRepositoryManager()
-                       ->getLocalRepository()
-                       ->findPackage($packageName, '*');
+                                  ->getLocalRepository()
+                                  ->findPackage($packageName, '*');
 
         if ($package === null) {
             throw UnresolvedUrlException::fromUrlAndPackageName($pullRequestUrl, $packageName);
