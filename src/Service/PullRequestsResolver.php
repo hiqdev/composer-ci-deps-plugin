@@ -8,6 +8,7 @@ use Composer\IO\IOInterface;
 use Composer\Plugin\PluginInterface;
 use cweagans\Composer\PatchCollection;
 use cweagans\Composer\Resolver\ResolverInterface;
+use hiqdev\ComposerCiDeps\Exception\UnresolvedUrlException;
 use Throwable;
 
 /**
@@ -64,6 +65,8 @@ class PullRequestsResolver implements ResolverInterface
 
                 $patch = $this->patchLocator->locate($line);
                 $collection->addPatch($patch);
+            } catch (UnresolvedUrlException $e) {
+                $this->io->warning($e->getMessage());
             } catch (Throwable $e) {
                 $this->io->writeError("Error while locating patch from URL: {$line}");
             }
