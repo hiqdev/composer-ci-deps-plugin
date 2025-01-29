@@ -15,7 +15,7 @@ of pull requests that are currentto be used inly being tested.
 
 1. Currently, the plugin supports pull requests from:
    1. Public GitHub repositories
-   2. Private GitHub repositories
+   2. Private GitLab repositories
 2. Only pull requests against the installed dependency versions are supported.
    It means that the plugin will not work if the pull request is against the
    feature branch, and you have the main repo branch installed as a dependency.
