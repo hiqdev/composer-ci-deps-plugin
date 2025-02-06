@@ -34,7 +34,7 @@ class PatchFromUrlFactory
         $patch->description = 'Requested in Pull Request for CI';
         $patch->url = $pullRequestUrl;
         if (!$this->isGitLabLink($pullRequestUrl)) {
-            $patch->url = $pullRequestUrl . '.patch';
+            $patch->url = $pullRequestUrl . '.diff';
         }
         $patch->extra = array_filter([
             'gitlab' => $this->isGitLabLink($pullRequestUrl) ? true : null,
