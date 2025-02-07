@@ -28,6 +28,8 @@ of pull requests that are currentto be used inly being tested.
 | Name                       | Description                                                                                                                   | Required? |
 |----------------------------|-------------------------------------------------------------------------------------------------------------------------------|-----------|
 | `GITLAB_REPO_ACCESS_TOKEN` | Gitlab Access Token with **read_api**, **read_repo** grants.<br />Make sure the token owner has access to the required repos. | Required  |
+| `EXIT_ON_PATCHING_ERROR`   | When set to `1`, the plugin will exit with a non-zero code if an error occurs during patching.                                | Optional  |
+
 
 ## Installation
 
